@@ -85,6 +85,12 @@ jupyter notebook cluster_analysis.ipynb
 
 3. The notebook includes a sample dataset (`sample_data.csv`) for testing
 
+## Documentation
+
+- **[Quick Start Guide](QUICKSTART.md)** - Get started in 5 minutes
+- **[Clustering Methods Comparison](CLUSTERING_COMPARISON.md)** - Detailed comparison of LLM, K-means, and DBSCAN
+- **[LLM Clustering Implementation Guide](LLM_CLUSTERING_GUIDE.md)** - Deep dive into how LLM clustering works
+
 ## Sample Output
 
 The notebook produces:
