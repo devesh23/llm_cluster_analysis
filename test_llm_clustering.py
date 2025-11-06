@@ -204,9 +204,15 @@ def test_json_parsing_robustness():
             # Simulate the parsing logic from the notebook
             response_text = response.strip()
             if "```json" in response_text:
-                response_text = response_text.split("```json")[1].split("```")[0].strip()
+                parts = response_text.split("```json")
+                if len(parts) > 1:
+                    inner_parts = parts[1].split("```")
+                    if len(inner_parts) > 0:
+                        response_text = inner_parts[0].strip()
             elif "```" in response_text:
-                response_text = response_text.split("```")[1].split("```")[0].strip()
+                parts = response_text.split("```")
+                if len(parts) > 2:
+                    response_text = parts[1].strip()
             
             result = json.loads(response_text)
             
