@@ -6,7 +6,10 @@ A Jupyter notebook for performing semantic cluster analysis using Azure AI Found
 
 - **Multi-line Data Handling**: Automatically groups semantic data by `sequence_uuid`, treating multiple lines as a single semantic unit
 - **Azure AI Integration**: Uses Azure AI Foundry APIs for embeddings and LLM-based cluster naming
-- **Flexible Clustering**: Supports both K-means and DBSCAN clustering algorithms
+- **Flexible Clustering**: Supports three clustering methods:
+  - **LLM-based clustering** (Recommended): AI intelligently groups data based on semantic meaning
+  - **K-means**: Traditional fast clustering for well-separated data
+  - **DBSCAN**: Density-based clustering with automatic cluster detection
 - **Automatic Cluster Naming**: Generates descriptive titles for clusters using LLM
 - **Visualization**: PCA-based 2D visualization of semantic clusters
 - **Export Functionality**: Saves clustered results to CSV for further analysis
@@ -97,14 +100,37 @@ The notebook produces:
 In the notebook's Configuration cell, you can adjust:
 
 ```python
-NUM_CLUSTERS = 5  # Number of clusters for K-means
-CLUSTERING_METHOD = 'kmeans'  # Options: 'kmeans', 'dbscan'
+NUM_CLUSTERS = 5  # Number of clusters for K-means and LLM methods
+CLUSTERING_METHOD = 'llm'  # Options: 'llm', 'kmeans', 'dbscan'
 ```
 
 ### Clustering Methods
 
-- **K-means**: Good for well-separated, spherical clusters with known cluster count
-- **DBSCAN**: Better for arbitrary shapes and automatic cluster detection
+- **LLM (Recommended)**: Uses AI to intelligently group data based on semantic meaning
+  - Best semantic understanding and accuracy
+  - Automatically identifies meaningful cluster themes
+  - Slower and uses more API calls
+  - Ideal for: Complex semantic data, when accuracy is more important than speed
+  
+- **K-means**: Traditional clustering algorithm
+  - Fast and efficient
+  - Good for well-separated, spherical clusters
+  - Requires knowing the number of clusters
+  - Ideal for: Large datasets, when speed is important
+  
+- **DBSCAN**: Density-based clustering
+  - Automatically detects number of clusters
+  - Better for arbitrary shapes
+  - May identify outliers/noise
+  - Ideal for: Unknown number of clusters, irregular cluster shapes
+
+### Method Comparison
+
+| Method | Speed | Semantic Accuracy | API Usage | Best Use Case |
+|--------|-------|-------------------|-----------|---------------|
+| LLM | Slow | Highest | High | Semantic analysis, complex themes |
+| K-means | Fast | Medium | Low | Large datasets, simple clustering |
+| DBSCAN | Medium | Medium | Low | Automatic cluster detection |
 
 ### Advanced Options
 
@@ -133,22 +159,34 @@ CLUSTERING_METHOD = 'kmeans'  # Options: 'kmeans', 'dbscan'
 └────────┬────────┘
          │
          v
-┌─────────────────┐
-│ Clustering      │
-│ (K-means/DBSCAN)│
-└────────┬────────┘
-         │
-         v
-┌─────────────────┐
-│ Azure AI LLM    │
-│ Title Generation│
-└────────┬────────┘
-         │
-         v
-┌─────────────────┐
-│ Results Export  │
-│ & Visualization │
-└─────────────────┘
+┌─────────────────────────────────────────┐
+│        Clustering Method Selection      │
+├─────────────┬─────────────┬─────────────┤
+│ LLM-based   │  K-means    │   DBSCAN    │
+│ (AI Groups) │ (Fast)      │ (Auto)      │
+└──────┬──────┴──────┬──────┴──────┬──────┘
+       │             │             │
+       └─────────────┴─────────────┘
+                     │
+                     v
+         ┌─────────────────────┐
+         │  LLM Clustering     │
+         │  1. Identify Themes │
+         │  2. Assign Items    │
+         └──────────┬──────────┘
+                    │
+                    v
+         ┌─────────────────────┐
+         │ Azure AI LLM        │
+         │ Title Generation    │
+         │ (or use LLM themes) │
+         └──────────┬──────────┘
+                    │
+                    v
+         ┌─────────────────────┐
+         │ Results Export      │
+         │ & Visualization     │
+         └─────────────────────┘
 ```
 
 ## Troubleshooting
