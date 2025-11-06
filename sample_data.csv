@@ -1,0 +1,33 @@
+sequence_uuid,semantic_data
+seq_001,Customer complained about slow delivery times
+seq_001,Said the product arrived damaged
+seq_001,Requested refund for the order
+seq_002,Website was down during peak hours
+seq_002,Users unable to login to their accounts
+seq_003,Payment processing failed multiple times
+seq_003,Transaction showed pending status for hours
+seq_004,Customer service representative was very helpful
+seq_004,Issue resolved within 24 hours
+seq_004,Highly satisfied with the support
+seq_005,Product quality exceeded expectations
+seq_005,Would recommend to friends and family
+seq_006,Billing error charged twice for same item
+seq_006,Refund not processed after 2 weeks
+seq_007,Mobile app crashes on startup
+seq_007,Unable to access account from phone
+seq_008,Delivery was faster than expected
+seq_008,Packaging was excellent
+seq_009,Product description did not match actual item
+seq_009,Color was different from website photos
+seq_010,Customer support took too long to respond
+seq_010,Had to wait over 3 days for a reply
+seq_011,Website is difficult to navigate
+seq_011,Search function doesn't work properly
+seq_012,Great selection of products
+seq_012,Prices are competitive
+seq_013,Account security features are lacking
+seq_013,No two-factor authentication available
+seq_014,Received wrong item in the package
+seq_014,Return process was complicated
+seq_015,Loyalty program benefits are excellent
+seq_015,Earned rewards quickly
